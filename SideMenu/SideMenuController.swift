@@ -289,7 +289,7 @@ open class SideMenuController: UIViewController {
 
         if animated {
             animateMenu(with: reveal,
-                        shouldChangeStatusBar: shouldChangeStatusBar,
+                        shouldChangeStatusBar: false,
                         animations: animationClosure,
                         completion: animationCompletionClosure)
         } else {
