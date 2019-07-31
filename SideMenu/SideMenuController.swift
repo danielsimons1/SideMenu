@@ -242,7 +242,7 @@ open class SideMenuController: UIViewController {
     private func changeMenuVisibility(reveal: Bool,
                                       animated: Bool = true,
                                       shouldCallDelegate: Bool = true,
-                                      shouldChangeStatusBar: Bool = true,
+                                      shouldChangeStatusBar: Bool = false,
                                       completion: ((Bool) -> Void)? = nil) {
         menuViewController.beginAppearanceTransition(true, animated: true)
 
@@ -302,7 +302,7 @@ open class SideMenuController: UIViewController {
     }
 
     private func animateMenu(with reveal: Bool,
-                             shouldChangeStatusBar: Bool = true,
+                             shouldChangeStatusBar: Bool = false,
                              animations: @escaping () -> Void,
                              completion: ((Bool) -> Void)? = nil) {
         let shouldAnimateStatusBarChange = preferences.basic.statusBarBehavior != .hideOnMenu
@@ -502,6 +502,7 @@ open class SideMenuController: UIViewController {
         // So we need to manipulate the windows of status bar manually.
 
         let behavior = self.preferences.basic.statusBarBehavior
+
         guard let sbw = UIWindow.sb, sbw.isStatusBarHidden(with: behavior) != hidden else {
             return
         }
